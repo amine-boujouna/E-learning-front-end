@@ -5,6 +5,7 @@ export const navItems: INavData[] = [
     name: 'Dashboard',
     url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
+
     badge: {
       color: 'info',
       text: 'NEW'
@@ -35,10 +36,25 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-layers' }
   },
   {
-    name: 'professeur',
-    url: '/base/breadcrumbs',
-    iconComponent: { name: 'cil-layers' }
-  },
+    name: 'Professeur',
+    iconComponent: { name: 'cil-layers' },
+    children: [
+      {
+        name: 'NIVEAU',
+        iconComponent: {name: 'cil-cursor'},
+        children: [
+          {
+            name: 'ajouter niveau',
+            url: '/niveau/add'
+          },
+          {
+            name: 'display niveaux',
+            url: '/niveau/show'
+          }
+
+        ]
+      }
+  ]}]
  /* {
     name: 'Eleve',
     url: '/base',
@@ -251,4 +267,4 @@ export const navItems: INavData[] = [
       }
     ]
   },*/
-];
+
