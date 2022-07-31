@@ -1,0 +1,99 @@
+ <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+          <c-col lg="7" md="9" xl="6">  
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form  [formGroup]="singup" (ngSubmit)="signupMethode()">
+                <h1>Register</h1>
+                <p class="text-medium-emphasis">Create your account</p>
+                  <c-input-group class="mb-3" id="a" class="form-group">
+                    <span cInputGroupText>
+                      <svg cIcon name="cilUser"></svg>
+                    </span>
+                    <input autoComplete="name" formControlName="username" cFormControl placeholder="Username" >
+                    
+                    </c-input-group>
+                <c-input-group class="mb-3" id="b"  class="form-group">
+                  <span cInputGroupText>@</span>
+                  <input autoComplete="email" formControlName="email" cFormControl placeholder="Email"  >
+                 
+              </c-input-group>
+                <c-input-group class="mb-3"  id="c" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input autoComplete="new-password" formControlName="password" cFormControl placeholder="Password" type="password"  >
+                 
+              </c-input-group>
+                <c-input-group class="mb-4" id="d" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input autoComplete="new-password" formControlName="confirmepassword" cFormControl placeholder="Repeat password" type="password"    >
+                 
+              
+              </c-input-group>
+                <c-input-group class="mb-3" id="e"  class="form-group"> 
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="firstname"  formControlName="firstname" cFormControl placeholder="firstname">
+  
+              </c-input-group>
+                <c-input-group class="mb-3" id="f" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="lastname" formControlName="lastname" cFormControl placeholder="lastname">
+                 
+              </c-input-group>
+                 <c-input-group class="mb-3" id="g" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="datenaissance" type="date" formControlName="datenaissance" cFormControl placeholder="datenaissance" />
+                </c-input-group>  
+                <c-input-group class="mb-3" id="h" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="phone" formControlName="phone" cFormControl placeholder="phone" />
+                </c-input-group>
+                <c-input-group class="mb-3" id="i" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="sexe" formControlName="sexe" cFormControl placeholder="sexe" />
+                </c-input-group>  
+               <c-input-group class="mb-3" id="i" class="form-group">
+    
+                 <select aria-label="Default select example" id="i" cSelect cPlaceholder  formControlName="sexe" >
+                  <option value="">Choose...</option>
+                  <option>HOMME</option>
+                  <option>FEMME</option>
+                </select> 
+              
+               </c-input-group> 
+                 <c-input-group class="mb-3" id="j" class="form-group">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="profession" formControlName="profession" cFormControl placeholder="profession" />
+                </c-input-group> 
+                 <select aria-label="Default select example" id="j" cSelect formControlName="profession" >
+                  <option>genre</option>
+                  <option>ELEVE</option>
+                  <option>Professeur</option>
+                </select>
+                <div class="d-grid">
+                  <button type="submit" cButton color="success">Create Account</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+          </c-col> 
+      </c-row>
+    </c-container>
+  </div>
+   
