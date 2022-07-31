@@ -40,16 +40,16 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-layers' },
     children: [
       {
-        name: 'NIVEAU',
+        name: 'EXERCICE',
         iconComponent: {name: 'cil-cursor'},
         children: [
           {
-            name: 'ajouter niveau',
-            url: '/niveau/add'
+            name: 'Ajouter exercice',
+            url: '/exercice/add'
           },
           {
             name: 'display niveaux',
-            url: '/niveau/show'
+            url: '/exercice/show'
           }
 
         ]

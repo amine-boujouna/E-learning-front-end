@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -52,6 +52,15 @@ import { ResetpasswordComponent } from './registration/resetpassword/resetpasswo
 import { AccueilComponent } from './accueil/accueil.component';
 
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatSliderModule} from "@angular/material/slider";
+import {NiveauAddComponent} from "./components/niveau/niveau-add/niveau-add.component";
+import {ExerciceAddComponent} from "./components/exercice/exercice-add/exercice-add.component";
+import {ExerciceAddFileComponent} from "./components/exercice/exercice-add-file/exercice-add-file.component";
+import {NiveauShowComponent} from "./components/niveau/niveau-show/niveau-show.component";
+import {ExerciceShowComponent} from "./components/exercice/exercice-show/exercice-show.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 //import { ActivecompteComponent } from './activecompte/activecompte.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -67,42 +76,64 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, SignupComponent, ForgetpasswordComponent, ResetpasswordComponent, AccueilComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    AvatarModule,
-    BreadcrumbModule,
-    FooterModule,
-    DropdownModule,
-    GridModule,
-    HeaderModule,
-    SidebarModule,
-    IconModule,
-    PerfectScrollbarModule,
-    NavModule,
-    ButtonModule,
-    FormModule,
-    UtilitiesModule,
-    ButtonGroupModule,
-    ReactiveFormsModule,
-    SidebarModule,
-    SharedModule,
-    TabsModule,
-    ListGroupModule,
-    ProgressModule,
-    BadgeModule,
-    ListGroupModule,
-    CardModule,
-    HttpClientModule,
-  ],
+  declarations: [
+
+    AppComponent,
+    ...APP_CONTAINERS,
+    LoginComponent,
+    SignupComponent,
+    ForgetpasswordComponent,
+    ResetpasswordComponent,
+    AccueilComponent,
+    NiveauAddComponent,
+    NiveauShowComponent,
+    ExerciceAddComponent,
+    ExerciceShowComponent,
+    ExerciceAddFileComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        AvatarModule,
+        BreadcrumbModule,
+        FooterModule,
+        DropdownModule,
+        GridModule,
+        MatSliderModule,
+        HeaderModule,
+        SidebarModule,
+        IconModule,
+        PerfectScrollbarModule,
+        NavModule,
+        ButtonModule,
+        FormModule,
+        UtilitiesModule,
+        ButtonGroupModule,
+        ReactiveFormsModule,
+        SidebarModule,
+        SharedModule,
+        TabsModule,
+        ListGroupModule,
+        ProgressModule,
+        BadgeModule,
+        ListGroupModule,
+        CardModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule
+
+
+
+    ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
-    
+
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
