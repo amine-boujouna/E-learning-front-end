@@ -30,10 +30,10 @@ export class ExerciceAddComponent implements OnInit {
   trimestre = new FormControl('', [Validators.required]);
   champ = new FormControl('', [Validators.required]);
   sousChamp = new FormControl('', [Validators.required]);
-  chapitre = new FormControl('', [Validators.required]);
-  difficulte = new FormControl('', [Validators.required]);
-  numero = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]);
-
+  chapitre= new FormControl('', [Validators.required]);
+  difficulte= new FormControl('', [Validators.required]);
+  numero = new FormControl('', [Validators.required]);
+  fichier = new FormControl('',[Validators.required]);
   ex:Exercice=new Exercice();
  niveaux:Niveau[]=[];
  trimestres:Trimestre[]=[];
@@ -62,14 +62,23 @@ export class ExerciceAddComponent implements OnInit {
     private _router:Router) { }
 
   ngOnInit(): void {
-
     this.uploadForm = this.formBuilder.group({
-      fichier: ['']
+      niveau : new FormControl('', [Validators.required]),
+      trimestre : new FormControl('', [Validators.required]),
+      champ : new FormControl('', [Validators.required]),
+      sousChamp : new FormControl('', [Validators.required]),
+      chapitre : new FormControl('', [Validators.required]),
+      difficulte : new FormControl('', [Validators.required]),
+      numero : new FormControl('', [Validators.required]),
+      fichier : new FormControl('',[Validators.required])
     });
+    console.log(this.uploadForm.get('fichier').valid);
+    console.log(this.uploadForm.get('champ').valid);
+
     this.cacher=false;
     this.ns.FindAllNiveaus().subscribe(res=>
     {this.niveaux=res;
-    console.log(this.niveau);
+    console.log(this.niveaux);
     }
 
     );
@@ -100,13 +109,27 @@ export class ExerciceAddComponent implements OnInit {
   }
 
   onSubmit() {
+   if (!this.niveau.invalid && !this.trimestre.invalid && !this.champ.invalid && !this.sousChamp.invalid && !this.chapitre.invalid && !this.difficulte.invalid && !this.numero.invalid ){
 
     this.es.addExercice(this.ex).subscribe(res=>{
       console.log(res.id);
       console.log(this.formdata)
       this.fs.AddExerciceFiles(res.id,this.formdata).subscribe(()=>("file added"));
+      this._router.navigateByUrl('exercice/show');
 
     })
+   }
+   console.log(!this.niveau.invalid);
+    console.log(!this.trimestre.invalid);
+
+    console.log(!this.champ.invalid);
+
+    console.log(!this.sousChamp.invalid);
+    console.log(!this.chapitre.invalid);
+    console.log(!this.difficulte.invalid);
+    console.log(!this.numero.invalid);
+
+
 
     console.log(this.ex)
     }
@@ -128,23 +151,26 @@ export class ExerciceAddComponent implements OnInit {
   }
 
   getErrorMessage() {
-    if (this.niveau.hasError('required')) {
+    if (    this.uploadForm.get('niveau').hasError('required')) {
       return 'Choisissez une valeur svp';
     }
-    if (this.trimestre.hasError('required')) {
+    if (this.uploadForm.get('trimestre').hasError('required')) {
       return 'Choisissez une valeur svp';
     }
-    if (this.champ.hasError('required')) {
+    if (this.uploadForm.get('champ').hasError('required')) {
       return 'Choisissez une valeur svp';
     }
-    if (this.sousChamp.hasError('required')) {
+    if (this.uploadForm.get('sousChamp').hasError('required')) {
       return 'Choisissez une valeur svp';
     }
-    if (this.difficulte.hasError('required')) {
+    if (this.uploadForm.get('difficulte').hasError('required')) {
       return 'Choisissez une valeur svp';
     }
-    if (this.numero.hasError('number')) {
-      return 'Choisir un nombre svp';
+    if (this.uploadForm.get('numero').hasError('number')) {
+      return 'Choisir un nombre superieur à 0 svp';
+    }
+    if (this.uploadForm.get('fichier').hasError('fichier')) {
+      return 'Ajouter fichier svp';
     }
 
     else return null;
