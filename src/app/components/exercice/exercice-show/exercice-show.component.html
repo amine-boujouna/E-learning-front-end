@@ -1,0 +1,55 @@
+<input matInput  placeholder="Filter">
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    displayedColumns = ['numero', 'niveau', 'trimestre','sousChamp', 'chapitre','difficulte','fichiers'];
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="numero">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.numero}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="niveau">
+      <mat-header-cell *matHeaderCellDef> Niveau </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.niveau.titre}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="trimestre">
+      <mat-header-cell *matHeaderCellDef> Trimestre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.trimestre.titre}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sousChamp">
+      <mat-header-cell *matHeaderCellDef> Specialité </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sousChamp.titre}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="chapitre">
+      <mat-header-cell *matHeaderCellDef> Chapitre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.chapitre.titre}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="difficulte">
+      <mat-header-cell *matHeaderCellDef> Difficulté </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.difficulte.titre}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fichiers">
+      <mat-header-cell *matHeaderCellDef> Fichiers </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a [href]="getSanitizedURL(element.fichiers[0].filePath)" download="enonce{{element.numero}}" ><mat-icon>cloud_download</mat-icon>
+        </a>
+
+
+       </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
