@@ -7,6 +7,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import { DomSanitizer} from '@angular/platform-browser';
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
 @Component({
   selector: 'app-exercice-show',
   templateUrl: './exercice-show.component.html',
@@ -50,6 +51,7 @@ export class ExerciceShowComponent implements OnInit {
       }
     };
     if (this.exercices != []) {
+      this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
   }
@@ -59,11 +61,15 @@ export class ExerciceShowComponent implements OnInit {
    this.getInfo()
   }
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
 
   applyFilter(filterValue) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   getSanitizedURL(url:string) {
