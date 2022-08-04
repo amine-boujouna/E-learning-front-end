@@ -65,6 +65,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 //import { ActivecompteComponent } from './activecompte/activecompte.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -103,7 +104,8 @@ const APP_CONTAINERS = [
         FooterModule,
         DropdownModule,
         GridModule,
-        MatSliderModule,
+      MatSortModule,
+      MatSliderModule,
         HeaderModule,
         SidebarModule,
         IconModule,
