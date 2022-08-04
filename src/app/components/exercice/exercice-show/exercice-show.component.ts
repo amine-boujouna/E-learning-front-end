@@ -30,15 +30,27 @@ export class ExerciceShowComponent implements OnInit {
   displayedColumns = ['numero', 'niveau', 'trimestre','sousChamp', 'chapitre','difficulte','fichiers'];
 
 
-  @delay(500)
+  @delay(200)
   getInfo(){
     this.es.FindAllExercices().subscribe(res=>this.exercices=res);
 
     this.getList();
   }
-  @delay(1500)
+  @delay(700)
   getList(){
     this.dataSource = new MatTableDataSource<Exercice>(this.exercices);
+    this.dataSource.filterPredicate = function (record,filter) {
+      return (record.difficulte.titre.toLocaleLowerCase().includes(filter.toLocaleLowerCase() )||
+        record.niveau.titre.toLocaleLowerCase().includes(filter.toLocaleLowerCase() ) ||
+        record.numero.toString().includes(filter.toLocaleLowerCase() ) ||
+        record.trimestre.titre.toLocaleLowerCase().includes(filter.toLocaleLowerCase() ) ||
+        record.sousChamp.titre.toLocaleLowerCase().includes(filter.toLocaleLowerCase() ) ||
+        record.chapitre.titre.toLocaleLowerCase().includes(filter.toLocaleLowerCase() )
+
+
+
+      );
+    }
     this.dataSource.sortingDataAccessor = (item, property) => {
       switch(property) {
         case 'niveau': return item.niveau.titre;
@@ -58,6 +70,7 @@ export class ExerciceShowComponent implements OnInit {
 
 
   ngOnInit(): void {
+
    this.getInfo()
   }
   @ViewChild(MatSort) sort: MatSort;
@@ -65,11 +78,13 @@ export class ExerciceShowComponent implements OnInit {
 
 
 
-  applyFilter(filterValue) {
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
+    /*if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
-    }
+    }*/
   }
 
   getSanitizedURL(url:string) {

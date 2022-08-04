@@ -3,7 +3,6 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -96,6 +95,8 @@ const APP_CONTAINERS = [
     ExerciceShowComponent,
     ExerciceAddFileComponent],
     imports: [
+      MatInputModule,
+
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
