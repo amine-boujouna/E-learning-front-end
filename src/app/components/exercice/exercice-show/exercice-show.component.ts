@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Exercice} from "../../../model/Exercice";
 import {ExerciceService} from "../../../services/exerciceService/exercice.service";
 import {delay} from "utils-decorators";
+import { saveAs } from 'file-saver'
 
 import {MatTableDataSource} from "@angular/material/table";
 import { DomSanitizer} from '@angular/platform-browser';
@@ -87,8 +88,9 @@ export class ExerciceShowComponent implements OnInit {
     }*/
   }
 
+
   getSanitizedURL(url:string) {
-    return this.sanitizer.bypassSecurityTrustUrl(url);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
@@ -102,4 +104,10 @@ export class ExerciceShowComponent implements OnInit {
     }
   }
 
+
+  save(url:string,adress:string) {
+
+    saveAs(this.getSanitizedURL(url).toString(),adress);
+    console.log(this.getSanitizedURL(url).toString())
+  }
 }

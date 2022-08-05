@@ -48,7 +48,7 @@ export const navItems: INavData[] = [
             url: '/exercice/add'
           },
           {
-            name: 'display niveaux',
+            name: 'Afficher exercices',
             url: '/exercice/show'
           }
 

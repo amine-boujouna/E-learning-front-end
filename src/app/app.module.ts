@@ -65,6 +65,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import {MatButtonModule} from "@angular/material/button";
 //import { ActivecompteComponent } from './activecompte/activecompte.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -96,6 +97,7 @@ const APP_CONTAINERS = [
     ExerciceAddFileComponent],
     imports: [
       MatInputModule,
+      MatButtonModule,
 
         BrowserModule,
         BrowserAnimationsModule,
