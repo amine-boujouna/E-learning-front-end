@@ -26,6 +26,6 @@ export class ExerciceService {
     return this._http.get<Exercice>("http://localhost:8081/Elearning/exercice/"+id);
   }
   FindAllExercices():Observable<Exercice[]>{
-    return this._http.get<Exercice[]>("http://localhost:8081/elearning/Exercice");
+    return this._http.get<Exercice[]>("http://localhost:8081/Elearning/exercice");
   }
 }
