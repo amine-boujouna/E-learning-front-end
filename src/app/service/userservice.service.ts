@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './model/User';
+import { User } from '../model/User';
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -45,4 +45,9 @@ export class UserserviceService {
   Activecompte(username:string){
     return this.http.put<User>('http://localhost:8081/Elearning/activecompte/'+username,username);
   }
+  getUser(username: string): void {
+    let url = `http://localhost:8081/Elearning/username${username}`;
+    this.http.get< User >(url)  
+      //if api returns any data
+}
 }

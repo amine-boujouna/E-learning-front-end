@@ -19,6 +19,7 @@ export const navItems: INavData[] = [
     url: '/theme/colors',
     iconComponent: { name: 'cilUser' }
   },
+  
 /*  {
     name: 'Typography',
     url: '/theme/typography',
@@ -35,7 +36,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-layers' }
   },
   {
-    name: 'professeur',
+    name: 'Professeur',
     url: '/base/breadcrumbs',
     iconComponent: { name: 'cil-layers' }
   },

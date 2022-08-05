@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { TokenserviceService } from '../../tokenservice.service';
+import { TokenserviceService } from '../../service/tokenservice.service';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 schemas: [

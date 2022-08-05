@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserserviceService } from '../userservice.service';
+import { UserserviceService } from '../service/userservice.service';
 
 @Component({
   selector: 'app-accueil',

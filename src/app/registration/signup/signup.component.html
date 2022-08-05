@@ -1,99 +1,201 @@
- <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
-    <c-container>
-      <c-row class="justify-content-center">
-          <c-col lg="7" md="9" xl="6">  
-          <c-card class="mx-4">
-            <c-card-body class="p-4">
-              <form  [formGroup]="singup" (ngSubmit)="signupMethode()">
-                <h1>Register</h1>
-                <p class="text-medium-emphasis">Create your account</p>
-                  <c-input-group class="mb-3" id="a" class="form-group">
-                    <span cInputGroupText>
-                      <svg cIcon name="cilUser"></svg>
-                    </span>
-                    <input autoComplete="name" formControlName="username" cFormControl placeholder="Username" >
-                    
-                    </c-input-group>
-                <c-input-group class="mb-3" id="b"  class="form-group">
-                  <span cInputGroupText>@</span>
-                  <input autoComplete="email" formControlName="email" cFormControl placeholder="Email"  >
-                 
-              </c-input-group>
-                <c-input-group class="mb-3"  id="c" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input autoComplete="new-password" formControlName="password" cFormControl placeholder="Password" type="password"  >
-                 
-              </c-input-group>
-                <c-input-group class="mb-4" id="d" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input autoComplete="new-password" formControlName="confirmepassword" cFormControl placeholder="Repeat password" type="password"    >
-                 
-              
-              </c-input-group>
-                <c-input-group class="mb-3" id="e"  class="form-group"> 
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="firstname"  formControlName="firstname" cFormControl placeholder="firstname">
+
+   <div class="d-flex justify-content-center">
+    <form [formGroup]="signup" (ngSubmit)="signupMethode()" #formDir="ngForm" >
+    <h2 class="d-flex justify-content-center">SignUp</h2>
+        <div class="cross-validation" [class.cross-validation-error]="signup.errors?.['identityRevealed'] && (signup.touched || signup.dirty)">
+          <div class="row">
+            <div class="col">
+          <div class="form-group">
+            <label for="firstname" class="labelcss">Prenom</label>
+            <input type="text" id="firstname" class="form-control inputcss"
+                  formControlName="firstname" required >
   
-              </c-input-group>
-                <c-input-group class="mb-3" id="f" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="lastname" formControlName="lastname" cFormControl placeholder="lastname">
-                 
-              </c-input-group>
-                 <c-input-group class="mb-3" id="g" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="datenaissance" type="date" formControlName="datenaissance" cFormControl placeholder="datenaissance" />
-                </c-input-group>  
-                <c-input-group class="mb-3" id="h" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="phone" formControlName="phone" cFormControl placeholder="phone" />
-                </c-input-group>
-                <c-input-group class="mb-3" id="i" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="sexe" formControlName="sexe" cFormControl placeholder="sexe" />
-                </c-input-group>  
-               <c-input-group class="mb-3" id="i" class="form-group">
-    
-                 <select aria-label="Default select example" id="i" cSelect cPlaceholder  formControlName="sexe" >
-                  <option value="">Choose...</option>
-                  <option>HOMME</option>
-                  <option>FEMME</option>
-                </select> 
-              
-               </c-input-group> 
-                 <c-input-group class="mb-3" id="j" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="profession" formControlName="profession" cFormControl placeholder="profession" />
-                </c-input-group> 
-                 <select aria-label="Default select example" id="j" cSelect formControlName="profession" >
-                  <option>genre</option>
-                  <option>ELEVE</option>
-                  <option>Professeur</option>
-                </select>
-                <div class="d-grid">
-                  <button type="submit" cButton color="success">Create Account</button>
-                </div>
-              </form>
-            </c-card-body>
-          </c-card>
-          </c-col> 
-      </c-row>
-    </c-container>
-  </div>
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="firstname.errors?.['required']">
+              Prenom est obligatoir.
+              </div>
+              <div *ngIf="firstname.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="lastname">Nom</label>
+            <input type="text" id="lastname" class="form-control"
+                  formControlName="lastname" required>
+  
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="lastname.errors?.['required']">
+                Nom est obligatoir.
+              </div>
+              <div *ngIf="lastname.errors?.['minlength']">
+                lastname must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+        </div> 
+          </div> 
+        <div class="row">
+          <div class="col"> 
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control"
+                  formControlName="password" required>
+  
+            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="password.errors?.['required']">
+                Password est obligatoir.
+              </div>
+              <div *ngIf="password.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="confirmepassword">Conirmer mot de passe</label>
+            <input type="password" id="confirmepassword" class="form-control"
+                  formControlName="confirmepassword" required>
+  
+            <div *ngIf="confirmepassword.invalid && (confirmepassword.dirty || confirmepassword.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="confirmepassword.errors?.['required']">
+                Confirmer mote de passe est obligatoir.
+              </div>
+              <div *ngIf="confirmepassword.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+          </div>
+          </div> 
+          <div class="row">
+          <div class="col">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control"
+                  formControlName="email" required>
+  
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="email.errors?.['required']">
+                Email est obligatoir.
+              </div>
+              <div *ngIf="email.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="username">username</label>
+            <input type="text" id="username" class="form-control"
+                  formControlName="username" required>
+  
+            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="username.errors?.['required']">
+                Username est Obligatoir.
+              </div>
+              <div *ngIf="username.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+          </div>
+          </div>
+          <div class="row">
+           <div class="col">
+          <div class="form-group">
+            <label for="sexe">sexe</label>
+             <input type="text" id="sexe" class="form-control"
+                  formControlName="sexe" required> 
+            <div *ngIf="sexe.invalid && (sexe.dirty || sexe.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="sexe.errors?.['required']">
+                Sexe est obligatoir.
+              </div>
+              <div *ngIf="sexe.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+           </div>
+          <div class="col">
+           <div class="form-group">
+            <label for="datenaissance">datenaissance</label>
+            <input type="text" id="datenaissance" class="form-control"
+                  formControlName="datenaissance" required>
    
+            <div *ngIf="datenaissance.invalid && (datenaissance.dirty || datenaissance.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="datenaissance.errors?.['required']">
+                date de naissance est obligatoir.
+              </div>
+              <div *ngIf="datenaissance.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div> 
+          </div> 
+          </div>
+          </div>
+          
+          <div class="row">
+          <div class="col"> 
+          <div class="form-group">
+            <label for="profession">profession</label>
+            <input type="text" id="profession" class="form-control"
+                  formControlName="profession" required>
+  
+            <div *ngIf="profession.invalid && (profession.dirty || profession.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="profession.errors?.['required']">
+                Prefossion est obligatoir.
+              </div>
+              <div *ngIf="profession.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="phone">phone</label>
+            <input type="number" id="phone" class="form-control"
+                  formControlName="phone" required>
+  
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="phone.errors?.['required']">
+                Phone est obligatoir.
+              </div>
+              <div *ngIf="phone.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div>   
+        </div> 
+          </div>
+        </div> 
+        <button type="submit"  id="btnsave" [disabled]="signup.invalid" class="btn btn-primary btn-sm">save</button>
+        <button type="button"  id="btnreset" class="btn btn-secondary btn-sm" (click)="formDir.resetForm({})">Reset</button>
+    </form>
+  </div>
+  

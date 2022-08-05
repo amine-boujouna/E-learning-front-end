@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
-//import { ActivecompteComponent } from './activecompte/activecompte.component';
+import { ActivecompteComponent } from './activecompte/activecompte.component';
 
 
 import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './registration/login/login.component';
 import { SignupComponent } from './registration/signup/signup.component';
+import { CanLoginGuard } from "./registration/can-login.guard";
+
+
+
 
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'accueil',
     pathMatch: 'full'
   },
   {
@@ -26,7 +30,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
+          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'theme',
@@ -74,11 +78,11 @@ const routes: Routes = [
   
   //{path: '**', redirectTo: 'dashboard'},
  // {path:"acceuil",redirectTo:'active'},
-  {path:"login",component:LoginComponent,
-  },
-  
-  {path:"signup",component:SignupComponent},
+  {path:"login",component:LoginComponent},
   {path:"accueil",component:AccueilComponent},
+  {path:"signup",component:SignupComponent},
+  {path:"active",component:ActivecompteComponent},
+  
 ];
 
 @NgModule({
