@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
 import { User } from 'src/app/model/User';
+import { UserserviceService } from 'src/app/service/userservice.service';
 import { TokenserviceService } from '../../../service/tokenservice.service';
 
 @Component({
@@ -20,6 +21,8 @@ export class DefaultHeaderComponent extends HeaderComponent implements  OnInit{
   constructor(private classToggler: ClassToggleService,private tokenservice:TokenserviceService,private router:Router) {
     super();
   }
+  currentuser:any=UserserviceService.currentuser
+
   userconnected:string;
   ngOnInit(): void {
   this.userconencte();
@@ -32,4 +35,5 @@ export class DefaultHeaderComponent extends HeaderComponent implements  OnInit{
      this.userconnected=this.tokenservice.getUserconnected();
     console.log("a+"+this.userconnected);
   }
+
 }

@@ -20,18 +20,13 @@ export class ActivecompteComponent implements OnInit {
   user:User;
   data:any;
   username!:string
-  enabled:boolean
+  currentuser:any=UserserviceService.currentuser
+
 activecommpte(){
   console.log("aaa")
-this.userserivce.Activecompte(this.getuser.name).subscribe(res => {
-  this.data=res;
-  this.enabled=true;
+this.userserivce.Activecompte("amineboj").subscribe(res => {
 });
 console.log("bbb");
-}
-userconencte(){
-  this.userconnected=this.tokenservice.getUserconnected();
- console.log("a+"+this.userconnected);
 }
 getuser() {
   let username;

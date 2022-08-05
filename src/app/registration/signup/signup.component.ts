@@ -14,22 +14,22 @@ export class SignupComponent implements OnInit {
   
 
 
-  hero = { firstname: 'firstname.', lastname: 'lastname', username: 'username', email: 'email',phone: '23565',sexe: 'sexe',profession: 'professoin',password: 'password',confirmepassword: 'confirmepassword',datenaissance:'datenaissance'};
+  hero = { firstname: '', lastname: '', username: '', email: '',phone: '',sexe: '',profession: '',password: '',confirmepassword: '',datenaissance:''};
   signup!: FormGroup;
 
   ngOnInit(): void {
     this.signup = new FormGroup({
       firstname: new FormControl(this.hero.firstname, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(5),
       ]), 
       lastname: new FormControl(this.hero.lastname, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(5),
       ]), 
       username: new FormControl(this.hero.username, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(5),
       ]), 
       email: new FormControl(this.hero.email, [
         Validators.required,
@@ -41,7 +41,8 @@ export class SignupComponent implements OnInit {
       ]),   
       phone: new FormControl(this.hero.phone, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(8),
+        
       ]),   
       sexe: new FormControl(this.hero.sexe, [
         Validators.required,
@@ -49,11 +50,11 @@ export class SignupComponent implements OnInit {
       ]),  
       password: new FormControl(this.hero.password, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(5),
       ]),  
       confirmepassword: new FormControl(this.hero.confirmepassword, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(5),
       ]),  
       profession: new FormControl(this.hero.profession, [
         Validators.required,

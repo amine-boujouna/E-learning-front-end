@@ -3,6 +3,7 @@ import { DOCUMENT } from '@angular/common';
 
 import { getStyle, rgbToHex } from '@coreui/utils/src';
 import { TokenserviceService } from 'src/app/service/tokenservice.service';
+import { UserserviceService } from 'src/app/service/userservice.service';
 
 @Component({
   templateUrl: 'colors.component.html'
@@ -11,7 +12,7 @@ export class ColorsComponent implements OnInit, AfterViewInit {
 
   constructor(
     @Inject(DOCUMENT) private document: HTMLDocument,
-    private renderer: Renderer2
+    private renderer: Renderer2,private tokenservice:TokenserviceService,private userserive:UserserviceService
   ) {
   }
   ThemeColor:ThemeColorComponent;
@@ -41,11 +42,13 @@ export class ColorsComponent implements OnInit, AfterViewInit {
       }
     );
   }
-
+  user:string
+  currentuser:any=UserserviceService.currentuser
   ngOnInit(): void {
     // this.themeColors();
   }
-
+ 
+ 
 
   ngAfterViewInit(): void {
     this.themeColors();

@@ -35,42 +35,42 @@ const routes: Routes = [
       {
         path: 'theme',
         loadChildren: () =>
-          import('./views/theme/theme.module').then((m) => m.ThemeModule)
+          import('./views/theme/theme.module').then((m) => m.ThemeModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'base',
         loadChildren: () =>
-          import('./views/base/base.module').then((m) => m.BaseModule)
+          import('./views/base/base.module').then((m) => m.BaseModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'buttons',
         loadChildren: () =>
-          import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
+          import('./views/buttons/buttons.module').then((m) => m.ButtonsModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'forms',
         loadChildren: () =>
-          import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule)
+          import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'charts',
         loadChildren: () =>
-          import('./views/charts/charts.module').then((m) => m.ChartsModule)
+          import('./views/charts/charts.module').then((m) => m.ChartsModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'icons',
         loadChildren: () =>
-          import('./views/icons/icons.module').then((m) => m.IconsModule)
+          import('./views/icons/icons.module').then((m) => m.IconsModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'notifications',
         loadChildren: () =>
-          import('./views/notifications/notifications.module').then((m) => m.NotificationsModule)
+          import('./views/notifications/notifications.module').then((m) => m.NotificationsModule),canActivate: [CanLoginGuard]
       },
       {
         path: 'widgets',
         loadChildren: () =>
-          import('./views/widgets/widgets.module').then((m) => m.WidgetsModule)
+          import('./views/widgets/widgets.module').then((m) => m.WidgetsModule),canActivate: [CanLoginGuard]
       },
      
     ]
