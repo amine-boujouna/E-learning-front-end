@@ -1,9 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 import {
@@ -42,6 +42,7 @@ import {
   ProgressModule,
   SharedModule,
   SidebarModule,
+  TableModule,
   TabsModule,
   UtilitiesModule,
 } from '@coreui/angular';
@@ -59,6 +60,24 @@ import { CanLoginGuard } from './registration/can-login.guard';
 import { ActivecompteComponent } from './activecompte/activecompte.component';
 
 
+import {MatSliderModule} from "@angular/material/slider";
+import {NiveauAddComponent} from "./components/niveau/niveau-add/niveau-add.component";
+import {ExerciceAddComponent} from "./components/exercice/exercice-add/exercice-add.component";
+import {ExerciceAddFileComponent} from "./components/exercice/exercice-add-file/exercice-add-file.component";
+import {NiveauShowComponent} from "./components/niveau/niveau-show/niveau-show.component";
+import {ExerciceShowComponent} from "./components/exercice/exercice-show/exercice-show.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatTreeModule} from "@angular/material/tree";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+
+
+
+
 //import { ActivecompteComponent } from './activecompte/activecompte.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -74,16 +93,24 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, ForgetpasswordComponent, ResetpasswordComponent, AccueilComponent,SignupComponent, ActivecompteComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, ForgetpasswordComponent, ResetpasswordComponent, AccueilComponent,SignupComponent, ActivecompteComponent, NiveauAddComponent,
+  NiveauShowComponent,
+  ExerciceAddComponent,
+  ExerciceShowComponent,
+  ExerciceAddFileComponent],
+imports:[
+  BrowserModule,
+  BrowserAnimationsModule,
+  MatInputModule,
+  MatButtonModule,
     AppRoutingModule,
     AvatarModule,
     BreadcrumbModule,
     FooterModule,
     DropdownModule,
     GridModule,
+  MatSortModule,
+  MatSliderModule,
     HeaderModule,
     SidebarModule,
     IconModule,
@@ -103,8 +130,18 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     HttpClientModule,
-    MatFormFieldModule
-  ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
+    MatTableModule,
+    MatTreeModule,
+    TableModule,
+    MatPaginatorModule
+
+    ],
   providers: [
     {
       provide: LocationStrategy,
@@ -116,7 +153,7 @@ const APP_CONTAINERS = [
       useClass: AuthInterceptor, 
       multi: true
     },
-    
+
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,

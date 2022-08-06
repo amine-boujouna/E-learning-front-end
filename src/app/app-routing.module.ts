@@ -11,6 +11,11 @@ import { CanLoginGuard } from "./registration/can-login.guard";
 
 
 
+import {NiveauShowComponent} from "./components/niveau/niveau-show/niveau-show.component";
+import {NiveauAddComponent} from "./components/niveau/niveau-add/niveau-add.component";
+import {ExerciceAddComponent} from "./components/exercice/exercice-add/exercice-add.component";
+import {ExerciceAddFileComponent} from "./components/exercice/exercice-add-file/exercice-add-file.component";
+import {ExerciceShowComponent} from "./components/exercice/exercice-show/exercice-show.component";
 
 
 
@@ -27,6 +32,26 @@ const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'niveau/add',
+        component: NiveauAddComponent
+      },
+      {
+        path: 'niveau/show',
+        component: NiveauShowComponent
+      },
+      {
+        path: 'exercice/add',
+        component: ExerciceAddComponent
+      },
+      {
+        path: 'exercice/add/file',
+        component:ExerciceAddFileComponent
+      },
+      {
+        path: 'exercice/show',
+        component: ExerciceShowComponent
+      },
       {
         path: 'dashboard',
         loadChildren: () =>
@@ -72,13 +97,14 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/widgets/widgets.module').then((m) => m.WidgetsModule),canActivate: [CanLoginGuard]
       },
-     
+
     ]
   },
-  
+
   //{path: '**', redirectTo: 'dashboard'},
  // {path:"acceuil",redirectTo:'active'},
   {path:"login",component:LoginComponent},
+
   {path:"accueil",component:AccueilComponent},
   {path:"signup",component:SignupComponent},
   {path:"active",component:ActivecompteComponent},
