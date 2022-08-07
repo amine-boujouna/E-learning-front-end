@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/model/User';
+import { TokenserviceService } from 'src/app/service/tokenservice.service';
+import { UserserviceService } from 'src/app/service/userservice.service';
 
 @Component({
   selector: 'app-accordions',
   templateUrl: './accordions.component.html',
   styleUrls: ['./accordions.component.scss']
 })
-export class AccordionsComponent {
+export class AccordionsComponent implements OnInit {
 
   items = [1, 2, 3, 4];
 
   constructor(
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,private tokenservice:TokenserviceService,private userserivce:UserserviceService
   ) { }
 
   getAccordionBodyText(value: string) {
@@ -26,4 +30,9 @@ export class AccordionsComponent {
     `;
     return this.sanitizer.bypassSecurityTrustHtml(textSample);
   }
+  ngOnInit(): void {
+  }
+
+ 
+
 }

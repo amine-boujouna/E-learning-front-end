@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
+import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule, FormModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
 import { ColorsComponent, ThemeColorComponent } from './colors.component';
@@ -19,7 +19,8 @@ import { ThemeRoutingModule } from './theme-routing.module';
     UtilitiesModule,
     IconModule,
     NavModule,
-    TabsModule
+    TabsModule,
+    FormModule
   ],
   declarations: [
     ColorsComponent,

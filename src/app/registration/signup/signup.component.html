@@ -1,99 +1,465 @@
- <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
-    <c-container>
-      <c-row class="justify-content-center">
-          <c-col lg="7" md="9" xl="6">  
-          <c-card class="mx-4">
-            <c-card-body class="p-4">
-              <form  [formGroup]="singup" (ngSubmit)="signupMethode()">
-                <h1>Register</h1>
-                <p class="text-medium-emphasis">Create your account</p>
-                  <c-input-group class="mb-3" id="a" class="form-group">
-                    <span cInputGroupText>
-                      <svg cIcon name="cilUser"></svg>
-                    </span>
-                    <input autoComplete="name" formControlName="username" cFormControl placeholder="Username" >
-                    
-                    </c-input-group>
-                <c-input-group class="mb-3" id="b"  class="form-group">
-                  <span cInputGroupText>@</span>
-                  <input autoComplete="email" formControlName="email" cFormControl placeholder="Email"  >
-                 
-              </c-input-group>
-                <c-input-group class="mb-3"  id="c" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input autoComplete="new-password" formControlName="password" cFormControl placeholder="Password" type="password"  >
-                 
-              </c-input-group>
-                <c-input-group class="mb-4" id="d" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input autoComplete="new-password" formControlName="confirmepassword" cFormControl placeholder="Repeat password" type="password"    >
-                 
-              
-              </c-input-group>
-                <c-input-group class="mb-3" id="e"  class="form-group"> 
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="firstname"  formControlName="firstname" cFormControl placeholder="firstname">
+<!-- 
+   <div class="d-flex justify-content-center">
+    <form [formGroup]="signup" (ngSubmit)="signupMethode()" #formDir="ngForm" >
+    <h2 class="d-flex justify-content-center">SignUp</h2>
+        <div class="cross-validation" [class.cross-validation-error]="signup.errors?.['identityRevealed'] && (signup.touched || signup.dirty)">
+          <div class="row">
+            <div class="col">
+          <div class="form-group">
+            <label for="firstname" class="labelcss">Prenom</label>
+            <input type="text" id="firstname" class="form-control inputcss"
+                  formControlName="firstname" required >
   
-              </c-input-group>
-                <c-input-group class="mb-3" id="f" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="lastname" formControlName="lastname" cFormControl placeholder="lastname">
-                 
-              </c-input-group>
-                 <c-input-group class="mb-3" id="g" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="datenaissance" type="date" formControlName="datenaissance" cFormControl placeholder="datenaissance" />
-                </c-input-group>  
-                <c-input-group class="mb-3" id="h" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="phone" formControlName="phone" cFormControl placeholder="phone" />
-                </c-input-group>
-                <c-input-group class="mb-3" id="i" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="sexe" formControlName="sexe" cFormControl placeholder="sexe" />
-                </c-input-group>  
-               <c-input-group class="mb-3" id="i" class="form-group">
-    
-                 <select aria-label="Default select example" id="i" cSelect cPlaceholder  formControlName="sexe" >
-                  <option value="">Choose...</option>
-                  <option>HOMME</option>
-                  <option>FEMME</option>
-                </select> 
-              
-               </c-input-group> 
-                 <c-input-group class="mb-3" id="j" class="form-group">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="profession" formControlName="profession" cFormControl placeholder="profession" />
-                </c-input-group> 
-                 <select aria-label="Default select example" id="j" cSelect formControlName="profession" >
-                  <option>genre</option>
-                  <option>ELEVE</option>
-                  <option>Professeur</option>
-                </select>
-                <div class="d-grid">
-                  <button type="submit" cButton color="success">Create Account</button>
-                </div>
-              </form>
-            </c-card-body>
-          </c-card>
-          </c-col> 
-      </c-row>
-    </c-container>
-  </div>
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="firstname.errors?.['required']">
+              Prenom est obligatoir.
+              </div>
+              <div *ngIf="firstname.errors?.['minlength']">
+                Prenom doit comporter au moins 4 caractères.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="lastname">Nom</label>
+            <input type="text" id="lastname" class="form-control"
+                  formControlName="lastname" required>
+  
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="lastname.errors?.['required']">
+                Nom est obligatoir.
+              </div>
+              <div *ngIf="lastname.errors?.['minlength']">
+                Nom doit comporter au moins 5 caractères.
+              </div>
+            </div>
+          </div> 
+        </div> 
+          </div> 
+        <div class="row">
+          <div class="col"> 
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control"
+                  formControlName="password" required>
+  
+            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="password.errors?.['required']">
+                Password est obligatoir.
+              </div>
+              <div *ngIf="password.errors?.['minlength']">
+                mot de passe doit comporter au moins 5 caractères.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="confirmepassword">Conirmer mot de passe</label>
+            <input type="password" id="confirmepassword" class="form-control"
+                  formControlName="confirmepassword" required>
+  
+            <div *ngIf="confirmepassword.invalid && (confirmepassword.dirty || confirmepassword.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="confirmepassword.errors?.['required']">
+                Confirmer mote de passe est obligatoir.
+              </div>
+              <div *ngIf="confirmepassword.errors?.['minlength']">
+                confirmepassword doit comporter au moins 5 caractères.
+              </div>
+            </div>
+          </div> 
+          </div>
+          </div> 
+          <div class="row">
+          <div class="col">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control"
+                  formControlName="email" required>
+  
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="email.errors?.['required']">
+                Email est obligatoir.
+              </div>
+              <div *ngIf="email.errors?.['minlength']">
+                Email doit comporter au moins 4 caractères.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="username">username</label>
+            <input type="text" id="username" class="form-control"
+                  formControlName="username" required>
+  
+            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="username.errors?.['required']">
+                Username est Obligatoir.
+              </div>
+              <div *ngIf="username.errors?.['minlength']">
+                username doit comporter au moins 5 caractères.
+              </div>
+            </div>
+          </div> 
+          </div>
+          </div>
+          <div class="row">
+           <div class="col">
+          <div class="form-group">
+            <label for="sexe">sexe</label>
+                  <select matNativeControl required formControlName="sexe" id="sexe" class="form-select" >
+                    <option selected>sexe</option>
+                    <option value="homme">HOMME</option>
+                    <option value="femme">FEMME</option>
+                  </select>
+            <div *ngIf="sexe.invalid && (sexe.dirty || sexe.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="sexe.errors?.['required']">
+                Sexe est obligatoir.
+              </div>
+              <div *ngIf="sexe.errors?.['minlength']">
+                sexe doit etre homme ou bien femme.
+              </div>
+            </div>
+          </div> 
+           </div>
+          <div class="col">
+           <div class="form-group">
+            <label for="datenaissance">datenaissance</label>
+            <input type="date" id="datenaissance" class="form-control"
+                  formControlName="datenaissance" required>
    
+            <div *ngIf="datenaissance.invalid && (datenaissance.dirty || datenaissance.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="datenaissance.errors?.['required']">
+                date de naissance est obligatoir.
+              </div>
+              <div *ngIf="datenaissance.errors?.['minlength']">
+                datedenaissance doit comporter au moins 8 caractères.
+              </div>
+            </div> 
+          </div> 
+          </div>
+          </div>
+          
+          <div class="row">
+          <div class="col"> 
+          <div class="form-group">
+            <label for="profession">profession</label>
+                  <select matNativeControl required formControlName="profession" id="profession" class="form-select" >
+                    <option selected >Profession</option>
+
+                    <option selected value="eleve">Eleve</option>
+                    <option value="professeur">Professeur</option>
+                  </select>
+            <div *ngIf="profession.invalid && (profession.dirty || profession.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="profession.errors?.['required']">
+                Prefossion est obligatoir.
+              </div>
+              <div *ngIf="profession.errors?.['minlength']">
+                la profession doit comporter au moins 4 caractères.
+              </div>
+            </div>
+          </div> 
+          </div>
+          <div class="col">
+          <div class="form-group">
+            <label for="phone">phone</label>
+            <input type="number" id="phone" class="form-control"
+                  formControlName="phone" required>
+  
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="phone.errors?.['required']">
+                Phone est obligatoir.
+              </div>
+              <div *ngIf="phone.errors?.['minlength']">
+                Phone doit comporter au moins 8 number.
+              </div>
+            </div>
+          </div>   
+        </div> 
+          </div>
+        </div> 
+        <button type="submit"  id="btnsave" [disabled]="signup.invalid" class="btn btn-primary btn-sm">save</button>
+        <button type="button"  id="btnreset" class="btn btn-secondary btn-sm" (click)="formDir.resetForm({})">Reset</button>
+    </form>
+  </div>
+   -->
+   <!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">S'inscrire</h2>
+            <form [formGroup]="signup" (ngSubmit)="signupMethode()" #formDir="ngForm">
+               <div class="cross-validation" [class.cross-validation-error]="signup.errors?.['identityRevealed'] && (signup.touched || signup.dirty)">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+               <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label"  for="firstname">Prenom</label>
+                    <input type="text" id="form3Example1" formControlName="firstname" class="form-control" />
+                     <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                    class="alert alert-danger">
+                  <div *ngIf="firstname.errors?.['required']" >
+                  Prenom est obligatoir.
+                  </div>
+                  <div *ngIf="firstname.errors?.['minlength']">
+                    Prenom doit comporter au moins 4 caractères.
+                  </div>
+                  </div>
+                  </div> 
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="lastname">Nom</label>
+                    <input type="text" id="form3Example2" formControlName="lastname" class="form-control" />
+                     <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                     class="alert alert-danger">
+  
+                    <div *ngIf="lastname.errors?.['required']">
+                     Nom est obligatoir.
+                     </div>
+                     <div *ngIf="lastname.errors?.['minlength']">
+                      Nom doit comporter au moins 5 caractères.
+                    </div>
+                    </div>
+                   </div> 
+               </div> 
+                </div>
+
+              <!-- Email input -->
+               <div class="form-outline mb-4">
+                <label class="form-label" for="email">Adresse Email</label>
+                <input type="email" id="form3Example3" formControlName="email" class="form-control" />
+                 <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="email.errors?.['required']">
+                Email est obligatoir.
+              </div>
+              <div *ngIf="email.errors?.['minlength']">
+                Email doit comporter au moins 4 caractères.
+              </div>
+              </div> 
+              </div> 
+
+              <!--  username -->
+               <div class="form-outline mb-4">
+                <label class="form-label" for="username">Username</label>
+                <input type="text" id="form3Example4" formControlName="username" class="form-control" />
+                 <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="username.errors?.['required']">
+                Username est Obligatoir.
+              </div>
+              <div *ngIf="username.errors?.['minlength']">
+                username doit comporter au moins 5 caractères.
+              </div>
+              </div> 
+              </div> 
+              <!-- Password passxord et confirmpassword -->
+               <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="password">Mot de passe</label>
+                    <input type="password" id="form3Example1" formControlName="password" class="form-control" />
+                     <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                    class="alert alert-danger">
+      
+                  <div *ngIf="password.errors?.['required']">
+                    Password est obligatoir.
+                  </div>
+                  <div *ngIf="password.errors?.['minlength']">
+                    mot de passe doit comporter au moins 5 caractères.
+                  </div>
+                </div> 
+                  </div>
+                </div>
+              
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="confirmepassword">Confirmer mot de passe</label>
+                    <input type="password" id="form3Example2" formControlName="confirmepassword" class="form-control" />
+                    <div *ngIf="confirmepassword.invalid && (confirmepassword.dirty || confirmepassword.touched)"
+                    class="alert alert-danger">
+      
+                  <div *ngIf="confirmepassword.errors?.['required']">
+                    Confirmer mote de passe est obligatoir.
+                  </div>
+                  <div *ngIf="confirmepassword.errors?.['minlength']">
+                    confirmepassword doit comporter au moins 5 caractères.
+                  </div>
+                </div>
+                  </div>
+                </div>
+              </div> 
+              <!-- sexe et datenaissance  -->
+               <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="sexe">sexe</label>
+                    <select matNativeControl required formControlName="sexe" id="sexe" class="form-select" >
+                      <option selected>sexe</option>
+                      <option value="homme">HOMME</option>
+                      <option value="femme">FEMME</option>
+                      <div *ngIf="sexe.invalid && (sexe.dirty || sexe.touched)"
+                      class="alert alert-danger">
+        
+                    <div *ngIf="sexe.errors?.['required']">
+                      Sexe est obligatoir.
+                    </div>
+                    <div *ngIf="sexe.errors?.['minlength']">
+                      sexe doit etre homme ou bien femme.
+                    </div>
+                  </div>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="datenaissance">date de naissance</label>
+
+                    <input type="date" id="form3Example2" formControlName="datenaissance" class="form-control" />
+                    <div *ngIf="datenaissance.invalid && (datenaissance.dirty || datenaissance.touched)"
+                    class="alert alert-danger">
+      
+                  <div *ngIf="datenaissance.errors?.['required']">
+                    date de naissance est obligatoir.
+                  </div>
+                  <div *ngIf="datenaissance.errors?.['minlength']">
+                    datedenaissance doit comporter au moins 8 caractères.
+                  </div>
+                </div> 
+                  </div>
+                </div>
+              </div> 
+             <!-- profession -->
+              <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="phone">phone</label>
+                  <input type="number" id="form3Example1" formControlName="phone" class="form-control" />
+                   <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                  class="alert alert-danger">
+    
+                <div *ngIf="phone.errors?.['required']">
+                  Phone est obligatoir.
+                </div>
+                <div *ngIf="phone.errors?.['minlength']">
+                  Phone doit comporter au moins 8 number.
+                </div>
+              </div> 
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="profession">profession</label>
+                  <select matNativeControl required formControlName="profession" id="profession" class="form-select" >
+
+                    <option selected value="eleve">Eleve</option>
+                    <option value="professeur">Professeur</option>
+                  </select>
+                   <div *ngIf="profession.invalid && (profession.dirty || profession.touched)"
+                  class="alert alert-danger">
+    
+                <div *ngIf="profession.errors?.['required']">
+                  Prefossion est obligatoir.
+                </div>
+                <div *ngIf="profession.errors?.['minlength']">
+                  la profession doit comporter au moins 4 caractères.
+                </div>
+              </div> 
+                </div>
+              </div>
+            </div> 
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                <label class="form-check-label" for="form2Example33">
+                  Abonnez-vous à notre platfrome
+                                </label>
+              </div>
+          
+               </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                S'inscrire            
+                </button>
+
+              <!-- Register buttons -->
+              <!-- <div class="text-center">
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div> -->
+             <!-- </div> -->
+            </form>
+          
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="assets/img/avatars/aa.jpg" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

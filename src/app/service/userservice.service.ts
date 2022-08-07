@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './model/User';
+import { User } from '../model/User';
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -11,7 +11,7 @@ const httpOptions = {
 })
 export class UserserviceService {
 
- 
+ static currentuser:any = {}
   constructor(private http: HttpClient) { }
   baseUrl="http://localhost:8081/Elearning/resetpassword/{email}/{newpass}/{cofirm}";
   findalluser():Observable<any> {
@@ -43,6 +43,11 @@ export class UserserviceService {
     return this.http.post(`${this.baseUrl}` + `/create`, {email,newpass,cofirm})
   }
   Activecompte(username:string){
-    return this.http.put<User>('http://localhost:8081/Elearning/activecompte/'+username,username);
+    let url=`http://localhost:8081/Elearning/activecompte/${username}`
+    return this.http.put<User>(url,username)
   }
+  getUser(username: string): Observable <User> {
+    let url = `http://localhost:8081/Elearning/username/${username}`;
+    return this.http.get< User >(url)  
+}
 }

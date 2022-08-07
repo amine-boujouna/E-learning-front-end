@@ -2,6 +2,8 @@ import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit, Renderer2
 import { DOCUMENT } from '@angular/common';
 
 import { getStyle, rgbToHex } from '@coreui/utils/src';
+import { TokenserviceService } from 'src/app/service/tokenservice.service';
+import { UserserviceService } from 'src/app/service/userservice.service';
 
 @Component({
   templateUrl: 'colors.component.html'
@@ -10,10 +12,12 @@ export class ColorsComponent implements OnInit, AfterViewInit {
 
   constructor(
     @Inject(DOCUMENT) private document: HTMLDocument,
-    private renderer: Renderer2
+    private renderer: Renderer2,private tokenservice:TokenserviceService,private userserive:UserserviceService
   ) {
   }
-
+  ThemeColor:ThemeColorComponent;
+ 
+  
   public themeColors(): void {
     Array.from(this.document.querySelectorAll('.theme-color')).forEach(
       // @ts-ignore
@@ -38,10 +42,13 @@ export class ColorsComponent implements OnInit, AfterViewInit {
       }
     );
   }
-
+  user:string
+  currentuser:any=UserserviceService.currentuser
   ngOnInit(): void {
     // this.themeColors();
   }
+ 
+ 
 
   ngAfterViewInit(): void {
     this.themeColors();
@@ -63,13 +70,21 @@ export class ThemeColorComponent implements OnInit {
     'theme-color w-75 rounded mb-3': true
   };
 
+
   @HostBinding('style.display') display = 'contents';
 
+
   ngOnInit(): void {
+   
+
     this.colorClasses = {
       ...this.colorClasses,
       [`bg-${this.color}`]: !!this.color
     };
+
   }
+
+
+ 
 }
 

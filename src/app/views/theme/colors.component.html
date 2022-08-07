@@ -1,50 +1,49 @@
-<!-- <div class="fade-in">
-  <c-card class="mb-4">
-    <c-card-header>
-      Theme colors
-    </c-card-header>
-    <c-card-body>
-      <c-row>
-        <app-theme-color color="primary">
-          <h6>Brand Primary Color</h6>
-        </app-theme-color>
-        <app-theme-color color="secondary">
-          <h6>Brand Secondary Color</h6>
-        </app-theme-color>
-        <app-theme-color color="success">
-          <h6>Brand Success Color</h6>
-        </app-theme-color>
-        <app-theme-color color="danger">
-          <h6>Brand Danger Color</h6>
-        </app-theme-color>
-        <app-theme-color color="warning">
-          <h6>Brand Warning Color</h6>
-        </app-theme-color>
-        <app-theme-color color="info">
-          <h6>Brand Info Color</h6>
-        </app-theme-color>
-        <app-theme-color color="light">
-          <h6>Brand Light Color</h6>
-        </app-theme-color>
-        <app-theme-color color="dark">
-          <h6>Brand Dark Color</h6>
-        </app-theme-color>
-      </c-row>
-    </c-card-body>
-  </c-card>
-</div>
- -->
+<!-- 
  <c-card>
-  <img cCardImg="top" src="./assets/img/avatars/2.jpg"   width="300" height="400">
+  <img cCardImg="top" src=""   width="300" height="400">
   <c-card-body>
     <h5 cCardTitle>Profil</h5>
   </c-card-body>
-  <ul cListGroup >
-    <li cListGroupItem> <strong>Nom</strong></li>
-    <li cListGroupItem><strong>Pronom</strong></li>
-    <li cListGroupItem><strong>Username</strong></li>
+  <div class="row">
+  <div class="col">
+  <ul cListGroup>
+    <li cListGroupItem><strong>username:</strong>{{currentuser.username}}</li>
+    <li cListGroupItem> <strong>Nom:</strong>{{currentuser.firstname}}</li>
+    <li cListGroupItem><strong>Pronom:</strong>{{currentuser.lastname}}</li>
   </ul>
-  <c-card-body>
-    <a cCardLink [routerLink]>Updates</a>
-  </c-card-body>
-</c-card>
+  </div>
+  <div class="col">
+  <ul cListGroup>
+    <li cListGroupItem> <strong>Sexe:</strong>{{currentuser.sexe}}</li>
+    <li cListGroupItem><strong>Profession:</strong>{{currentuser.profession}}</li>
+    <li cListGroupItem><strong>datanaissance:</strong>{{currentuser.datenaissance}}</li>
+    <li cListGroupItem><strong>phone:</strong>{{currentuser.phone}}</li>
+  </ul>
+</div>
+  </div>
+ 
+</c-card> -->
+<div class="card" style="width: 18rem;">
+  <!-- <img src="" class="card-img-top" alt="Chicago Skyscrapers"/> -->
+  <div class="card-body">
+    <h5 class="card-title">image</h5>
+    <p class="card-text">A propos:</p>
+  </div>
+ 
+  <ul class="list-group list-group-light list-group-small">
+    <li class="list-group-item px-4"><strong>username:</strong>{{currentuser.username}}</li>
+    <li class="list-group-item px-4"><strong>prenom:</strong>{{currentuser.firstname}}</li>
+    <li class="list-group-item px-4"><strong>nom:</strong>{{currentuser.lastname}}</li>
+    <li class="list-group-item px-4"> <strong>Sexe:</strong>{{currentuser.sexe}}</li>
+    <li class="list-group-item px-4"><strong>Profession:</strong>{{currentuser.profession}}</li>
+    <li class="list-group-item px-4"><strong>datanaissance:</strong>{{currentuser.datenaissance}}</li>
+    <li class="list-group-item px-4"><strong>phone:</strong>{{currentuser.phone}}</li>
+  </ul>
+  <!-- <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div> -->
+</div>
+
+
+
