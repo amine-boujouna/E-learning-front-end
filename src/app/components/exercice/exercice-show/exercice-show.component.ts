@@ -107,6 +107,8 @@ export class ExerciceShowComponent implements OnInit {
 
   save(url:string,adress:string) {
 
+
+
     saveAs(this.getSanitizedURL(url).toString(),adress);
     console.log(this.getSanitizedURL(url).toString())
   }

@@ -1,3 +1,5 @@
+<h2 >Afficher exercices</h2>
+
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Insert Keyword" #input>
@@ -52,6 +54,7 @@
       <mat-cell *matCellDef="let element">
 
         <a [href]="getSanitizedURL(element.fichiers[0].filePath)" download target="_blank" ><mat-icon>cloud_download</mat-icon>
+          {{element.fichiers[0].fileName}}
         </a>
 
 
